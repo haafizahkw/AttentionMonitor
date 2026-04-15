@@ -1,117 +1,114 @@
-# AttentionMonitor
+# 👁️ AttentionMonitor
 
 A real-time **attention monitoring system** that tracks **eye behavior, gaze direction, head movement, and awareness score** to detect distraction and drowsiness.
 
-Built using computer vision and facial landmark tracking, the system provides **live feedback, alerts, and a dashboard UI** for monitoring user focus.
+The system uses computer vision and facial landmark tracking to provide **live feedback, alerts, and an interactive dashboard UI**.
 
 ---
 
-## Features
+##  Features
 
-### Eye Tracking & Blink Detection
+###  Eye Tracking & Blink Detection
 
-* Detects eye state: **Open / Closed / One Eye Closed**
-* Uses Eye Aspect Ratio (EAR) for accurate detection 
-* Tracks eye closure over multiple frames to avoid false positives
+* Detects **Open / Closed / One Eye Closed**
+* Uses Eye Aspect Ratio (EAR) for robust detection
+* Tracks multiple frames to avoid false positives
 
 ---
 
-### Gaze Detection (Iris Tracking)
+###  Gaze Detection (Iris Tracking)
 
-* Detects gaze direction:
+* Detects:
 
   * Left / Right / Up / Down / Center
-* Uses iris position relative to eye boundaries 
+* Uses iris position relative to eye boundaries
 * Works only when eyes are open for better accuracy
 
 ---
 
-### Head Movement Detection
+###  Head Movement Detection
 
-* Tracks head orientation using facial landmarks
 * Detects:
 
-  * LEFT / RIGHT / UP / DOWN / CENTER 
+  * LEFT / RIGHT / UP / DOWN / CENTER
+* Uses facial landmarks (MediaPipe Face Mesh)
 
 ---
 
-### Awareness Scoring System
+###  Awareness Scoring System
 
 * Each subject gets a **dynamic awareness score (0–100)**
 * Score decreases when:
 
   * Eyes are closed
-  * User looks down
+  * Looking down / distracted
 * Score increases when attentive
-* Visualized in UI with a progress bar 
+* Visualized with progress bars in UI
 
 ---
 
-### Real-Time Alert System
+###  Alert System
 
 * Triggers alert when awareness drops below threshold
-* Non-blocking **beep sound using threading** 
-* Prevents alert spam using control flags
+* Uses **non-blocking sound alerts**
+* Prevents alert spam using control logic
 
 ---
 
-### Multi-Person Tracking
+###  Multi-Person Tracking
 
-* Supports up to **2 subjects simultaneously**
-* Tracks each person independently:
+* Supports up to **2 subjects**
+* Tracks each independently:
 
   * Eye state
-  * Gaze
-  * Head direction
+  * Gaze direction
+  * Head orientation
   * Awareness score
 
 ---
 
-### Interactive Dashboard UI
+###  Interactive UI Dashboard
 
 * Built using **PyQt5**
 * Displays:
 
   * Live camera feed
-  * Subject cards with real-time stats
-  * Awareness progress bars
-  * Event log with timestamps 
+  * Subject cards
+  * Awareness bars
+  * Event logs
 
 ---
 
-### Event Logging System
+###  Event Logging
 
-* Logs important events:
+* Logs:
 
-  * Eye state changes
-  * Gaze deviation
+  * Eye changes
+  * Gaze movement
   * Head movement
-* Timestamped logs for tracking behavior over time
+* Timestamped for analysis
 
 ---
 
-## How It Works
+##  How It Works
 
-1. Capture live video from webcam
-2. Detect faces using MediaPipe Face Mesh
-3. Analyze:
-
-   * Eye aspect ratio (EAR)
-   * Iris position
-4.  Detect head orientation using landmarks
-5.  Compute awareness score per subject
+1.  Capture live video from webcam
+2.  Detect faces using MediaPipe
+3.  Track eyes and iris position
+4.  Estimate head orientation
+5.  Compute awareness score
 6.  Trigger alert if attention drops
-7.  Display everything in real-time dashboard
+7.  Update dashboard in real time
 
 ---
 
 ##  Tech Stack
 
-* **Python**
-* **OpenCV**
-* **MediaPipe**
-* **NumPy**
-* **PyQt5 (UI)**
+* Python
+* OpenCV
+* MediaPipe
+* NumPy
+* PyQt5
 
 ---
 
@@ -127,25 +124,45 @@ AttentionMonitor/
 │   ├── eye_tracking/
 │   │   └── eye.py               # Eye + gaze detection
 │   │
-│   └──facial_expression/
+│   └── facial_expression/
 │       └── face_landmarks.py    # Head tracking
-│   
+│
 ├── ui/
 │   ├── main_window.py           # Main application UI
-│   ├── camera_view.py           # Camera display
-│   ├── panels.py                # Info panels + logs
-│   ├── dashboard.py             # Alternate dashboard
-│   └── styles.py                # UI styling
+│   ├── camera_view.py          # Camera display
+│   ├── panels.py               # Info panels + logs
+│   ├── dashboard.py            # Alternate dashboard
+│   └── styles.py               # UI styling
 │
-├── config.py                    # System thresholds
-├── main.py                      # Entry point
+├── utils/
+│   └── camera.py               # Camera initialization
+│
+├── config.py                   # System thresholds
+├── main.py                     # Entry point
 ├── requirements.txt
 └── README.md
 ```
 
+
 ---
 
-##  Configuration
+### Install Dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+---
+
+### Run the Application
+
+```bash
+python main.py
+```
+
+---
+
+## ⚙️ Configuration
 
 Modify system parameters in:
 
@@ -161,20 +178,20 @@ Includes:
 
 ---
 
-##  Use Cases
+## 🎯 Use Cases
 
-*  Driver monitoring systems
-*  Student focus tracking
-*  Workplace attention monitoring
-*  Human behavior analysis
+* 🚗 Driver monitoring systems
+* 📚 Student attention tracking
+* 💻 Workplace productivity tools
+* 🧠 Behavioral analysis systems
 
 ---
 
-##  Future Improvements
+## 🔮 Future Improvements
 
-*  Advanced audio alerts
-*  Attention analytics dashboard
-*  AI-based fatigue prediction
-*  Web-based deployment
+* 🔊 Advanced alert system
+* 📊 Analytics dashboard
+* 🧠 ML-based fatigue prediction
+* 🌐 Web deployment
 
 ---
